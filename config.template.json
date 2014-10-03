@@ -1,3 +1,7 @@
 {
-  "client_id": "your_client_id"
+  "client_id": "your_client_id",
+  "clip_program": {
+    "name": "xsel",
+    "options": ["-i"]
+  }
 }

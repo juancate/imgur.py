@@ -15,7 +15,11 @@ config = {}
 
 def copy_link_to_clipboard(link):
     echo = subprocess.Popen(['echo', link], stdout=subprocess.PIPE)
-    subprocess.Popen(['xclip'], stdin=echo.stdout, stdout=subprocess.PIPE)
+    clip_program = config.get('clip_program')
+    command = ['xclip']
+    if clip_program:
+        command = [clip_program['name']] + clip_program['options']
+    subprocess.Popen(command, stdin=echo.stdout, stdout=subprocess.PIPE)
     echo.stdout.close()
 
 
